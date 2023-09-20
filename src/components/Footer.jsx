@@ -1,3 +1,5 @@
+import Order from "./Order";
+
 /* eslint-disable react/no-unescaped-entities */
 const Footer = () => {
     const hour = new Date().getHours();
@@ -5,17 +7,17 @@ const Footer = () => {
     const closeHour = 22;
     const isOpen = hour >= openHour && hour <= closeHour;
     return (
-        <>
+        <footer className="footer">
             {isOpen ? (
-                <footer>
-                    {new Date().toLocaleTimeString()}. We're currently open
-                </footer>
+                <Order closeHour={closeHour} openHour={openHour} />
             ) : (
-                <footer>
-                    {new Date().toLocaleTimeString()}. Sorry we're close
-                </footer>
+                <p>
+                    We're happy to serve you between {openHour}:00 and{" "}
+                    {closeHour}
+                    :00.
+                </p>
             )}
-        </>
+        </footer>
     );
 };
 
